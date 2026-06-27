@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Poker settlement</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="topbar" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Poker night</p>
+          <h1 id="page-title">Settlement</h1>
+        </div>
+      </section>
+
+      <section class="summary-grid" aria-label="Summary">
+        <article>
+          <span>Total buy-in</span>
+          <strong id="total-in">0:-</strong>
+        </article>
+        <article>
+          <span>Final count</span>
+          <strong id="total-out">0:-</strong>
+        </article>
+        <article>
+          <span id="mismatch-label">Mismatch</span>
+          <strong id="mismatch">0:-</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="table-wrap" aria-label="Players">
+          <table>
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Buy in</th>
+                <th>Final count</th>
+                <th>Count diff</th>
+                <th>Adjusted result</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="players"></tbody>
+          </table>
+          <div class="player-actions">
+            <button class="add-player-button" id="add-player" type="button">+ Add player</button>
+            <button class="clear-action-button clear-button desktop-clear" type="button">Clear</button>
+          </div>
+        </div>
+
+        <aside class="results" aria-labelledby="results-title">
+          <div class="results-head">
+            <div>
+              <p class="eyebrow">Least transfers</p>
+              <h2 id="results-title">Who pays who</h2>
+            </div>
+            <span id="transfer-count">0</span>
+          </div>
+          <ol id="transfers" class="transfer-list"></ol>
+          <p id="empty-state" class="empty-state">Enter at least two players with amounts.</p>
+        </aside>
+        <div class="mobile-clear-tile">
+          <button class="clear-action-button clear-button" type="button">Clear</button>
+        </div>
+      </section>
+    </main>
+
+    <template id="player-row-template">
+      <tr>
+        <td data-label="Player">
+          <input class="name-input" type="text" autocomplete="off" placeholder="Name">
+        </td>
+        <td data-label="Buy in">
+          <input class="money-input buyin-input" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00">
+        </td>
+        <td data-label="Final count">
+          <input class="money-input final-input" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00">
+        </td>
+        <td data-label="Count diff">
+          <span class="count-diff">0:-</span>
+        </td>
+        <td data-label="Adjusted result">
+          <span class="net-result">0:-</span>
+        </td>
+        <td class="remove-cell">
+          <button class="remove-button" type="button" title="Remove player" aria-label="Remove player">x</button>
+        </td>
+      </tr>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
